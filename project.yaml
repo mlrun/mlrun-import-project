@@ -1,0 +1,42 @@
+kind: project
+metadata:
+  name: stress-mlrun-project-amite
+spec:
+  functions:
+  - url: jobs_func.py
+    name: normal_job_sec
+    kind: job
+    image: mlrun/mlrun
+    handler: func_sec
+  - url: jobs_func.py
+    name: normal_job_min
+    kind: job
+    image: mlrun/mlrun
+    handler: func_min
+  - url: jobs_func.py
+    name: normal_job_hour
+    kind: job
+    image: mlrun/mlrun
+    handler: func_hour
+  - url: ./dask_jobs_func.py
+    name: dask_func
+    kind: job
+    image: mlrun/ml-models
+    handler: train
+  - url: nuclio_func.py
+    name: nuclio_func
+    kind: nuclio
+    image: mlrun/mlrun
+    handler: handler
+  - url: jobs_func.py
+    name: func
+    kind: job
+    image: mlrun/mlrun
+    handler: func
+  workflows:
+  - path: workflow.py
+    name: workflow-func
+  artifacts: []
+  conda: ''
+  source: ''
+  desired_state: online
