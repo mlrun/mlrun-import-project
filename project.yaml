@@ -1,6 +1,7 @@
 kind: project
 metadata:
   name: stress-mlrun-project-amite
+  created: '2023-06-26T08:48:27.972000'
 spec:
   functions:
   - url: jobs_func.py
@@ -33,6 +34,36 @@ spec:
     kind: job
     image: mlrun/mlrun
     handler: func
+  - url: jobs_func.py
+    name: normal-job-sec
+    kind: job
+    image: mlrun/mlrun
+    handler: func_sec_dataset
+  - url: jobs_func.py
+    name: normal-job-min
+    kind: job
+    image: mlrun/mlrun
+    handler: func_min
+  - url: jobs_func.py
+    name: normal-job-hour
+    kind: job
+    image: mlrun/mlrun
+    handler: func_hour_artifact
+  - url: ./dask_jobs_func.py
+    name: dask-func
+    kind: job
+    image: mlrun/ml-models
+    handler: train
+  - url: nuclio_func.py
+    name: nuclio-func
+    kind: nuclio
+    image: mlrun/mlrun
+    handler: handler
+  - url: jobs_func.py
+    name: func-artifact
+    kind: job
+    image: mlrun/mlrun
+    handler: func_artifact
   workflows:
   - path: workflow.py
     name: workflow-func
@@ -40,3 +71,10 @@ spec:
   conda: ''
   source: ''
   desired_state: online
+  owner: amite
+  build:
+    commands: []
+    requirements: []
+  custom_packagers: []
+status:
+  state: online
