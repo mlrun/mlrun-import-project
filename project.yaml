@@ -22,7 +22,7 @@ spec:
   - url: ./dask_jobs_func.py
     name: dask_func
     kind: job
-    image: mlrun/ml-models
+    image: mlrun/mlrun
     handler: train
   - url: nuclio_func.py
     name: nuclio_func
@@ -52,7 +52,7 @@ spec:
   - url: ./dask_jobs_func.py
     name: dask-func
     kind: job
-    image: mlrun/ml-models
+    image: mlrun/mlrun
     handler: train
   - url: nuclio_func.py
     name: nuclio-func
