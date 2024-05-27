@@ -1,44 +1,13 @@
 kind: project
 metadata:
-  name: stress-mlrun-project-amite
-  created: '2023-06-26T08:48:27.972000'
+  name: stress-project-amite
 spec:
   functions:
-  - url: jobs_func.py
-    name: normal_job_sec
-    kind: job
-    image: mlrun/mlrun
-    handler: func_sec
-  - url: jobs_func.py
-    name: normal_job_min
-    kind: job
-    image: mlrun/mlrun
-    handler: func_min
-  - url: jobs_func.py
-    name: normal_job_hour
-    kind: job
-    image: mlrun/mlrun
-    handler: func_hour
-  - url: ./dask_jobs_func.py
-    name: dask_func
-    kind: job
-    image: mlrun/mlrun
-    handler: train
-  - url: nuclio_func.py
-    name: nuclio_func
-    kind: nuclio
-    image: mlrun/mlrun
-    handler: handler
-  - url: jobs_func.py
-    name: func
-    kind: job
-    image: mlrun/mlrun
-    handler: func
   - url: jobs_func.py
     name: normal-job-sec
     kind: job
     image: mlrun/mlrun
-    handler: func_sec_dataset
+    handler: func_sec
   - url: jobs_func.py
     name: normal-job-min
     kind: job
@@ -48,7 +17,22 @@ spec:
     name: normal-job-hour
     kind: job
     image: mlrun/mlrun
-    handler: func_hour_artifact
+    handler: func_hour
+  - url: jobs_func.py
+    name: artifact-job
+    kind: job
+    image: mlrun/mlrun
+    handler: func_artifact
+  - url: jobs_func.py
+    name: dataset-job
+    kind: job
+    image: mlrun/mlrun
+    handler: func_dataset
+  - url: spark_jobs_func.py
+    name: spark-job
+    kind: spark
+    image: mlrun/mlrun
+    handler: spark_handler
   - url: ./dask_jobs_func.py
     name: dask-func
     kind: job
@@ -59,11 +43,18 @@ spec:
     kind: nuclio
     image: mlrun/mlrun
     handler: handler
-  - url: jobs_func.py
-    name: func-artifact
+  - url: log_models.py
+    name: log-models-job
     kind: job
     image: mlrun/mlrun
-    handler: func_artifact
+    handler: log_n_models
+    requirements:
+    - scikit-learn
+  - url: serving_creator_func.py
+    name: serving-creator-job
+    kind: job
+    image: mlrun/mlrun
+    handler: deploy_serving_functions
   workflows:
   - path: workflow.py
     name: workflow-func
@@ -71,10 +62,7 @@ spec:
   conda: ''
   source: ''
   desired_state: online
-  owner: amite
   build:
     commands: []
     requirements: []
   custom_packagers: []
-status:
-  state: online

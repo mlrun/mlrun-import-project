@@ -1,4 +1,3 @@
-import mlrun
 import time
 import pandas as pd
 import numpy as np
@@ -6,7 +5,6 @@ import plotly.graph_objects as go
 from mlrun.artifacts import (
     PlotlyArtifact,
 )
-import random
 
 
 # 10 sec sleep function
