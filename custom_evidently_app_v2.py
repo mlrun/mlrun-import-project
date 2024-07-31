@@ -62,11 +62,12 @@ class CustomEvidentlyMonitoringApp(EvidentlyModelMonitoringApplicationBaseV2):
             data_drift_test_suite,
             f"suite_{str(monitoring_context.end_infer_time)}",
         )
-        self.log_project_dashboard(
-            monitoring_context,
-            monitoring_context.start_infer_time,
-            monitoring_context.end_infer_time,
-        )
+        # TODO: commented out due to ML-7159 - evidently app pod memory consumption is constantly growing
+        # self.log_project_dashboard(
+        #     monitoring_context,
+        #     monitoring_context.start_infer_time,
+        #     monitoring_context.end_infer_time,
+        # )
 
         monitoring_context.logger.info("Logged evidently objects")
         return ModelMonitoringApplicationResult(
