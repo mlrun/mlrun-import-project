@@ -6,7 +6,7 @@ from mlrun.common.schemas.model_monitoring.constants import (
 )
 from mlrun.model_monitoring.application import ModelMonitoringApplicationResult
 from mlrun.model_monitoring.applications.evidently_base import (
-    EvidentlyModelMonitoringApplicationBase,
+    EvidentlyModelMonitoringApplicationBaseV2,
 )
 from mlrun.model_monitoring.applications.context import MonitoringApplicationContext
 from evidently.metrics import (
@@ -21,7 +21,7 @@ from evidently.test_suite import TestSuite
 from evidently.ui.type_aliases import STR_UUID
 
 
-class CustomEvidentlyMonitoringApp(EvidentlyModelMonitoringApplicationBase):
+class CustomEvidentlyMonitoringApp(EvidentlyModelMonitoringApplicationBaseV2):
     NAME = "evidently-app-test-v2"
 
     def __init__(self, evidently_workspace_path: str, evidently_project_id: STR_UUID):
