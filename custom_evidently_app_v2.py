@@ -4,7 +4,7 @@ from mlrun.common.schemas.model_monitoring.constants import (
     ResultKindApp,
     ResultStatusApp,
 )
-from mlrun.model_monitoring.application import ModelMonitoringApplicationResult
+from mlrun.model_monitoring.applications import ModelMonitoringApplicationResult
 from mlrun.model_monitoring.applications.evidently_base import (
     EvidentlyModelMonitoringApplicationBase,
 )
