@@ -5,9 +5,7 @@ from mlrun.common.schemas.model_monitoring.constants import (
     ResultStatusApp,
 )
 from mlrun.model_monitoring.applications import ModelMonitoringApplicationResult
-from mlrun.model_monitoring.applications.evidently_base import (
-    EvidentlyModelMonitoringApplicationBase,
-)
+from mlrun.model_monitoring.applications.evidently import EvidentlyModelMonitoringApplicationBase
 from mlrun.model_monitoring.applications.context import MonitoringApplicationContext
 from evidently.metrics import (
     ColumnDriftMetric,
