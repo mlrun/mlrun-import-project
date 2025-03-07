@@ -53,12 +53,14 @@ class CustomEvidentlyMonitoringApp(EvidentlyModelMonitoringApplicationBase):
         self.log_evidently_object(
             monitoring_context,
             data_drift_report,
-            f"report_{str(monitoring_context.end_infer_time)}".replace(" ", "_").replace(":", "_").replace("+", "_"),
+            "report_evidently",
+            # f"report_{str(monitoring_context.end_infer_time)}".replace(" ", "_").replace(":", "_").replace("+", "_"),
         )
         self.log_evidently_object(
             monitoring_context,
             data_drift_test_suite,
-            f"suite_{str(monitoring_context.end_infer_time)}".replace(" ", "_").replace(":", "_").replace("+", "_"),
+            "suite_evidently",
+            # f"suite_{str(monitoring_context.end_infer_time)}".replace(" ", "_").replace(":", "_").replace("+", "_"),
         )
         # TODO: commented out due to ML-7159 - evidently app pod memory consumption is constantly growing
         # self.log_project_dashboard(
