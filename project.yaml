@@ -55,6 +55,11 @@ spec:
     kind: job
     image: mlrun/mlrun
     handler: deploy_serving_functions
+  - url: serving_creator_func_ce.py
+    name: serving-creator-job-ce
+    kind: job
+    image: mlrun/mlrun
+    handler: deploy_serving_functions
   workflows:
   - path: workflow.py
     name: workflow-func
