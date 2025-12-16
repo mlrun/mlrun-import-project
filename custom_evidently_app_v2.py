@@ -61,13 +61,7 @@ class CustomEvidentlyMonitoringApp(EvidentlyModelMonitoringApplicationBase):
         data_drift_report_run = self.create_report_run(
             sample_df, monitoring_context.end_infer_time
         )
-        self.evidently_workspace.add_run(
-            self.evidently_project_id, data_drift_report_run
-        )
 
-        self.log_evidently_object(
-            monitoring_context, data_drift_report_run, "evidently_report"
-        )
         monitoring_context.logger.info("Logged evidently object")
 
         return ModelMonitoringApplicationResult(
