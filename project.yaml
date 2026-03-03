@@ -60,10 +60,33 @@ spec:
     kind: job
     image: mlrun/mlrun
     handler: deploy_serving_functions
+  - url: prep_data.py
+    name: prep-data
+    image: mlrun/mlrun
+    handler: prep_data
+    with_repo: true
+  - url: hub://auto-trainer
+    name: auto-trainer
+  - url: hub://v2-model-server
+    name: serve
+  - url: hub://describe
+    name: describe
+  - url: gen_iris.py
+    name: gen-iris
+    image: mlrun/mlrun
+    handler: iris_generator
+    requirements:
+    - requests
   workflows:
   - path: workflow.py
     name: workflow-func
-  artifacts: []
+  artifacts:
+  - kind: artifact
+    metadata:
+      project: pipe
+      key: data
+    spec:
+      target_path: https://s3.wasabisys.com/iguazio/data/iris/iris.data.raw.csv
   conda: ''
   source: ''
   desired_state: online
